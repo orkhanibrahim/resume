@@ -15,10 +15,11 @@ public class UserProfileService {
     private final UserProfileRepository userProfileRepository;
 
     public String chooseTemplateBasedOnUser(String userId, Model model) {
-        Optional<UserProfile> userProfile = userProfileRepository.findByUsername(userId);
-        userProfile.orElseThrow(() -> new RuntimeException("user not found : " + userId));
+        var userProfileOptional = userProfileRepository.findByUsername(userId);
+        userProfileOptional.orElseThrow(() -> new RuntimeException("user not found : " + userId));
         model.addAttribute("userId", userId);
+        var userProfile = userProfileOptional.get();
         model.addAttribute("userProfile", userProfile);
-        return "profile-templates/" + userProfile.get().getId() + "/index";
+        return "profile-templates/" + userProfile.getId() + "/index";
     }
 }
