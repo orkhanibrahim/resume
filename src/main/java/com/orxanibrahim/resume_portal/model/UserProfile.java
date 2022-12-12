@@ -9,16 +9,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+@Entity
+@Table
 @Getter
 @Setter
-@Entity
-@Table(name = "User")
-public class User {
+public class UserProfile {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    private int theme;
+    private String summary;
     private String username;
-    private String passwords;
-    private Boolean active;
-    private String roles;
 }
