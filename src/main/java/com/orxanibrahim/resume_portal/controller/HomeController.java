@@ -1,5 +1,6 @@
 package com.orxanibrahim.resume_portal.controller;
 
+import com.orxanibrahim.resume_portal.model.Jobs;
 import com.orxanibrahim.resume_portal.model.UserProfile;
 import com.orxanibrahim.resume_portal.repository.UserProfileRepository;
 import com.orxanibrahim.resume_portal.service.UserProfileService;
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.Optional;
 
 @Controller
@@ -21,7 +24,8 @@ public class HomeController {
 
     @GetMapping("/")
     public String home() {
-        return "Hello buddy";
+        userProfileService.createJobInstances();
+        return "profile";
     }
 
     @GetMapping("/edit")
@@ -31,6 +35,6 @@ public class HomeController {
 
     @GetMapping("/view/{userId}")
     public String view(@PathVariable String userId, Model model) {
-       return userProfileService.chooseTemplateBasedOnUser(userId, model);
+        return userProfileService.chooseTemplateBasedOnUser(userId, model);
     }
 }
