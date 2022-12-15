@@ -34,7 +34,7 @@ public class UserProfile {
     private String firstName;
     private String lastName;
     private String email;
-    private String phone;
+    private String phone ;
     private String designation;
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true) //if user profile removed remove Jobs also
     @JoinColumn(name = "job_id")
