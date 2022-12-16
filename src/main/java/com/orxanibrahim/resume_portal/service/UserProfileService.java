@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -28,6 +30,10 @@ public class UserProfileService {
     }
 
     public void createJobInstances() {
+        Optional<UserProfile> userProfileOptional = userProfileRepository.findByUsername("orxan");
+        userProfileOptional.orElseThrow(() -> new RuntimeException("user not found : "));
+
+        var userProfile1 = userProfileOptional.get();
         Jobs job1 = Jobs.builder()
                 .company("company 1")
                 .designation("Designation 1")
@@ -42,15 +48,12 @@ public class UserProfileService {
                 .startDate(LocalDate.of(2020,8,23))
                 .endDate(LocalDate.of(2022,12,15))
                 .build();
-        UserProfile profile1 = UserProfile.builder()
-                .id(1)
-                .designation("Designation")
-                .username("orxan")
-                .firstName("Orkhan")
-                .lastName("Ibrahim")
-                .theme(1)
-                .jobs(Arrays.asList(job1,job2))
-                .build();
-        userProfileRepository.save(profile1);
+
+        userProfile1.getJobs().clear(); //todo: added temporarily, because other piece of code has a reference to the same list when page reloaded
+        userProfile1.getJobs().add(job1);
+        userProfile1.getJobs().add(job2);
+
+
+        userProfileRepository.save(userProfile1);
     }
 }
