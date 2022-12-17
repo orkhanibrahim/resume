@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 @RequiredArgsConstructor
 public class HomeController {
 
-    private final UserProfileRepository userProfileRepository;
     private final UserProfileService userProfileService;
 
     @GetMapping("/")

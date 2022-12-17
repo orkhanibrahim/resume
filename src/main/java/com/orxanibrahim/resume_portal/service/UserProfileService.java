@@ -27,10 +27,10 @@ public class UserProfileService {
     }
 
     public void createJobInstances() {
-        Optional<UserProfile> userProfileOptional = userProfileRepository.findByUsername("orxan");
-        userProfileOptional.orElseThrow(() -> new RuntimeException("user not found : "));
+        Optional<UserProfile> userProfileOptional1 = userProfileRepository.findByUsername("orxan");
+        userProfileOptional1.orElseThrow(() -> new RuntimeException("user not found : "));
 
-        var userProfile1 = userProfileOptional.get();
+        var userProfile1 = userProfileOptional1.get();
         Job job1 = Job.builder()
                 .company("company 1")
                 .designation("Designation 1")
