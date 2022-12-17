@@ -3,9 +3,7 @@ package com.orxanibrahim.resume_portal.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -38,5 +36,5 @@ public class UserProfile {
     private String designation;
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true) //if user profile removed remove Jobs also
     @JoinColumn(name = "job_id")
-    private List<Jobs> jobs = new ArrayList<>();
+    private List<Job> jobs = new ArrayList<>();
 }

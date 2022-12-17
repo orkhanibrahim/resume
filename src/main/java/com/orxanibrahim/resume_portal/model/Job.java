@@ -3,10 +3,7 @@ package com.orxanibrahim.resume_portal.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,7 +18,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Jobs {
+public class Job {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
@@ -29,4 +26,6 @@ public class Jobs {
     private String designation;
     private LocalDate startDate;
     private LocalDate endDate;
+    private Boolean isCurrentJob;
+    private String jobDescription;
 }

@@ -1,6 +1,6 @@
 package com.orxanibrahim.resume_portal.service;
 
-import com.orxanibrahim.resume_portal.model.Jobs;
+import com.orxanibrahim.resume_portal.model.Job;
 import com.orxanibrahim.resume_portal.model.UserProfile;
 import com.orxanibrahim.resume_portal.repository.UserProfileRepository;
 import lombok.RequiredArgsConstructor;
@@ -8,9 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -30,18 +27,18 @@ public class UserProfileService {
     }
 
     public void createJobInstances() {
-        Optional<UserProfile> userProfileOptional = userProfileRepository.findByUsername("orxan");
-        userProfileOptional.orElseThrow(() -> new RuntimeException("user not found : "));
+        Optional<UserProfile> userProfileOptional1 = userProfileRepository.findByUsername("orxan");
+        userProfileOptional1.orElseThrow(() -> new RuntimeException("user not found : "));
 
-        var userProfile1 = userProfileOptional.get();
-        Jobs job1 = Jobs.builder()
+        var userProfile1 = userProfileOptional1.get();
+        Job job1 = Job.builder()
                 .company("company 1")
                 .designation("Designation 1")
                 .id(1)
                 .startDate(LocalDate.of(2018,10,20))
                 .endDate(LocalDate.of(2020,8,22))
                 .build();
-        Jobs job2 = Jobs.builder()
+        Job job2 = Job.builder()
                 .company("company 2")
                 .designation("Designation 2")
                 .id(2)
