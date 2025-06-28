@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Resume Submitted</title>
+</head>
+<body>
+<h1>Resume Submitted</h1>
+<div th:each="section : ${processedResume.sections}">
+    <h2 th:text="${section.title}"></h2>
+    <ul>
+        <li th:each="entry : ${section.entries}" th:text="${entry}"></li>
+    </ul>
+</div>
+<a href="/resume">Back</a>
+</body>
+</html>
