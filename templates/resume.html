@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Resume</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        h1 { font-size: 24px; margin-bottom: 10px; }
+        h2 { font-size: 20px; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>{{ resume.get('name', 'Unnamed') }}</h1>
+    <h2>Education</h2>
+    <p>{{ resume.get('education', 'N/A') }}</p>
+    <h2>Skills</h2>
+    <ul>
+        {% for skill in resume.get('skills', []) %}
+        <li>{{ skill }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
