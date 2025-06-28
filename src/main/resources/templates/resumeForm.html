@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Resume Form</title>
+    <script>
+        function addSection() {
+            const container = document.getElementById('sections');
+            const index = container.children.length;
+            const div = document.createElement('div');
+            div.innerHTML = '<input type="text" name="sectionTitles" placeholder="Section Title" />' +
+                '<br/>' +
+                '<textarea name="sectionContents" placeholder="Content"></textarea><hr/>';
+            container.appendChild(div);
+        }
+    </script>
+</head>
+<body>
+<h1>Create Resume</h1>
+<form th:action="@{/resume}" method="post">
+    <label>Name: <input type="text" name="name" th:value="${resumeData.name}" required/></label><br/>
+    <label>Email: <input type="email" name="email" th:value="${resumeData.email}" required/></label><br/>
+    <label>Phone: <input type="text" name="phone" th:value="${resumeData.phone}"/></label><br/>
+    <h3>Sections</h3>
+    <div id="sections">
+        <div th:each="section, iterStat : ${resumeData.sections}">
+            <input type="text" name="sectionTitles" th:value="${section.title}" placeholder="Section Title" />
+            <br/>
+            <textarea name="sectionContents" placeholder="Content" th:text="${section.content}"></textarea>
+            <hr/>
+        </div>
+    </div>
+    <button type="button" onclick="addSection()">Add Section</button>
+    <br/>
+    <button type="submit">Submit</button>
+</form>
+</body>
+</html>

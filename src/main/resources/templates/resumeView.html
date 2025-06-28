@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Resume</title>
+</head>
+<body>
+<h1 th:text="${resume.name}">Name</h1>
+<p>Email: <span th:text="${resume.email}"></span></p>
+<p th:if="${resume.phone}">Phone: <span th:text="${resume.phone}"></span></p>
+<div th:each="section : ${resume.sections}">
+    <h2 th:text="${section.title}">Section Title</h2>
+    <p th:text="${section.content}">Content</p>
+</div>
+<a href="/resume">Edit</a>
+</body>
+</html>
